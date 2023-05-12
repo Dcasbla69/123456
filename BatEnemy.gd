@@ -14,7 +14,11 @@ func _ready():
 	pass
 
 
-
+func take_damage(damage):
+	health -= damage
+	if health <= 0:
+		# Player has died
+		get_tree().reload_current_scene()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
