@@ -15,8 +15,17 @@ func _ready():
 	$Timer.connect("timeout", self, "_on_spawn_timer_timeout")
 	$Timer.start()
 
+func UpdateHealthBar():
+	var bar = $Control/ProgressBar
+	bar.value = health
+	if health <= 20:
+		bar.modulate = Color(1,0,0)
+	elif health <= 50 and health > 20:
+		bar.modulate = Color(1,1,0)
+	elif health <= 100 and health > 50:
+		bar.modulate = Color(0,1,0)
+
 func take_damage(damage):
-	print("b")
 	health -= damage
 	if health <= 0:
 		# Player has died
@@ -39,6 +48,7 @@ func _on_spawn_timer_timeout():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	UpdateHealthBar()
 	var direction = Vector2.ZERO  # The direction the character will move in
 	
 	# Detect keyboard input
