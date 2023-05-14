@@ -12,6 +12,7 @@ var escena_enemic = preload("res://BatEnemy.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize()
+# warning-ignore:return_value_discarded
 	$Timer.connect("timeout", self, "_on_spawn_timer_timeout")
 	$Timer.start()
 
@@ -29,7 +30,8 @@ func take_damage(damage):
 	health -= damage
 	if health <= 0:
 		# Player has died
-		get_tree().reload_current_scene()
+# warning-ignore:return_value_discarded
+		get_tree().change_scene("res://mort.tscn")
 
 
 func spawn_enemy():
@@ -60,7 +62,9 @@ func _process(delta):
 		direction.y += 1
 	if Input.is_action_pressed("MoveUp"):
 		direction.y -= 1
-
+	if Input.is_action_just_pressed("ret"):
+# warning-ignore:return_value_discarded
+		get_tree().change_scene("res://Menu2.tscn")
 	# Normalize the direction vector to ensure diagonal movement isn't faster
 	direction = direction.normalized()
 
