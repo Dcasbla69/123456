@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://TileMap1.tscn" type="PackedScene" id=1]
 [ext_resource path="res://MageChar.tscn" type="PackedScene" id=2]
-[ext_resource path="res://MagicOrb.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Enemics.gd" type="Script" id=4]
 
 [node name="Node2D" type="Node2D"]
@@ -19,5 +18,3 @@ zoom = Vector2( 0.6, 0.6 )
 
 [node name="Enemics" type="Node2D" parent="."]
 script = ExtResource( 4 )
-
-[node name="KinematicBody2D" parent="." instance=ExtResource( 3 )]
