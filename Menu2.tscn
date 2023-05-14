@@ -1,0 +1,62 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Assets/menu/necropolis__demon_s_castle__by_joshuafdts_db7arxw-fullview.jpg" type="Texture" id=1]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Control
+
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	var Play = Button.new()
+	Play.text = \"Play\"
+	Play.connect(\"pressed\", self, \"_on_play_pressed\")
+	Play.set_position(Vector2(730, 400))
+	add_child(Play)
+	var Options = Button.new()
+	Options.text = \"Options\"
+	Options.connect(\"pressed\", self, \"_on_options_pressed\")
+	Options.set_position(Vector2(730, 450))
+	add_child(Options)
+	var Quit = Button.new()
+	Quit.text = \"Exit\"
+	Quit.connect(\"pressed\", self, \"_on_quit_pressed\")
+	Quit.set_position(Vector2(730, 500))
+	add_child(Quit)
+
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+
+
+func _on_play_pressed():
+# warning-ignore:return_value_discarded
+	get_tree().change_scene(\"res://Mapa.tscn\")
+	
+func _on_options_pressed():
+# warning-ignore:return_value_discarded
+	get_tree().change_scene(\"res://Options.tscn\")
+	
+func _on_quit_pressed():
+	get_tree().quit()
+"
+
+[node name="Menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = SubResource( 1 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+show_behind_parent = true
+margin_right = 1024.0
+margin_bottom = 724.0
+texture = ExtResource( 1 )
+expand = true
+flip_h = true
