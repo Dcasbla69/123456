@@ -6,6 +6,7 @@ extends KinematicBody2D
 # var b = "text"
 export var speed = 100
 export var health = 50
+export var Atk = 10
 onready var player = get_node("/root/Node2D/Player")
 var canhit = true
 var objectiu = null
@@ -17,8 +18,8 @@ func _ready():
 func take_damage(damage):
 	health -= damage
 	if health <= 0:
-		# Player has died
-		get_tree().reload_current_scene()
+		queue_free()
+		
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -43,5 +44,5 @@ func _on_Area2D_body_exited(body):
 		$Timer.stop()
 
 func _on_Timer_timeout():
-	objectiu.take_damage(10)
+	objectiu.take_damage(Atk)
 	$Timer.start()

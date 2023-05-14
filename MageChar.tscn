@@ -49,3 +49,5 @@ rect_scale = Vector2( 0.2, 0.1 )
 theme = ExtResource( 3 )
 value = 100.0
 percent_visible = false
+
+[node name="Abilities" type="Node2D" parent="."]
