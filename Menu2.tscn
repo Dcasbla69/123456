@@ -16,20 +16,20 @@ func _ready():
 	var Play = Button.new()
 	Play.text = \"Play\"
 	Play.connect(\"pressed\", self, \"_on_play_pressed\")
-	Play.set_position(Vector2(800, 400))
-	Play.set_size(Vector2(300,50))
+	Play.set_position(Vector2(1350, 570))
+	Play.set_size(Vector2(250,50))
 	add_child(Play)
 	var Options = Button.new()
 	Options.text = \"Options\"
 	Options.connect(\"pressed\", self, \"_on_options_pressed\")
-	Options.set_position(Vector2(800, 500))
-	Options.set_size(Vector2(300,50))
+	Options.set_position(Vector2(1350, 670))
+	Options.set_size(Vector2(250,50))
 	add_child(Options)
 	var Quit = Button.new()
 	Quit.text = \"Exit\"
 	Quit.connect(\"pressed\", self, \"_on_quit_pressed\")
-	Quit.set_position(Vector2(800, 600))
-	Quit.set_size(Vector2(300,50))
+	Quit.set_position(Vector2(1350, 770))
+	Quit.set_size(Vector2(250,50))
 	add_child(Quit)
 
 
