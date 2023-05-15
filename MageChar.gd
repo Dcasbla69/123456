@@ -7,6 +7,7 @@ extends KinematicBody2D
 export var speed = 200
 export var health = 100
 var escena_enemic = preload("res://BatEnemy.tscn")
+var magicOrb = preload("res://MagicOrb.tscn")
 
 
 # Called when the node enters the scene tree for the first time.
@@ -15,6 +16,8 @@ func _ready():
 # warning-ignore:return_value_discarded
 	$Timer.connect("timeout", self, "_on_spawn_timer_timeout")
 	$Timer.start()
+	$Timer2.connect("timeout", self, "_on_spawn_timer2_timeout")
+	$Timer2.start()
 
 func UpdateHealthBar():
 	var bar = $Control/ProgressBar
@@ -41,12 +44,22 @@ func spawn_enemy():
 	enemy.global_position = spawn_pos
 	Global.Enemics.add_child(enemy)
 
-
-
+func spawn_projetile(curs):
+	print("a")
+	var proj = magicOrb.instance()
+	proj.cursPos = curs
+	var spawn_pos = global_position
+	
+	proj.global_position = spawn_pos
+	Global.Abilities.add_child(proj)
+	
+	
+	
 func _on_spawn_timer_timeout():
 	spawn_enemy()
 
-
+func _on_spawn_timer2_timeout():
+	spawn_projetile(get_global_mouse_position())
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -71,3 +84,4 @@ func _process(delta):
 	# Move the character
 	var velocity = direction * speed * delta * 20
 	velocity = move_and_slide(velocity)
+
