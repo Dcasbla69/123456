@@ -5,7 +5,7 @@ extends KinematicBody2D
 # var a = 2
 # var b = "text"
 export var dmg = 50
-export var speed = 300
+export var speed = 800
 onready var player = get_node("/root/Node2D/Player")
 onready var enemies = get_node("/root/Node2D/Enemics")
 var target = null
