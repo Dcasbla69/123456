@@ -6,6 +6,7 @@ extends KinematicBody2D
 # var b = "text"
 export var speed = 200
 export var health = 100
+export var money = 100
 var cd = false
 var escena_enemic = preload("res://BatEnemy.tscn")
 var magicOrb = preload("res://MagicOrb.tscn")
