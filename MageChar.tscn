@@ -53,4 +53,3 @@ percent_visible = false
 [node name="Abilities" type="Node2D" parent="."]
 
 [node name="Timer2" type="Timer" parent="."]
-wait_time = 3.0

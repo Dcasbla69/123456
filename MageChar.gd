@@ -6,6 +6,7 @@ extends KinematicBody2D
 # var b = "text"
 export var speed = 200
 export var health = 100
+var cd = false
 var escena_enemic = preload("res://BatEnemy.tscn")
 var magicOrb = preload("res://MagicOrb.tscn")
 
@@ -45,7 +46,6 @@ func spawn_enemy():
 	Global.Enemics.add_child(enemy)
 
 func spawn_projetile(curs):
-	print("a")
 	var proj = magicOrb.instance()
 	proj.cursPos = curs
 	var spawn_pos = global_position
@@ -59,10 +59,13 @@ func _on_spawn_timer_timeout():
 	spawn_enemy()
 
 func _on_spawn_timer2_timeout():
-	spawn_projetile(get_global_mouse_position())
+	cd = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if Input.is_action_just_pressed("click") and cd == false:
+		spawn_projetile(get_global_mouse_position())
+		cd = true
 	UpdateHealthBar()
 	var direction = Vector2.ZERO  # The direction the character will move in
 	

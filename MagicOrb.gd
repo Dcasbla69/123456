@@ -10,15 +10,13 @@ onready var player = get_node("/root/Node2D/Player")
 onready var enemies = get_node("/root/Node2D/Enemics")
 var target = null
 var cursPos = get_global_mouse_position()
+onready var direction = (global_position.direction_to(cursPos)).normalized()
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	var direction = (global_position.direction_to(cursPos)).normalized()
-
-	# Move the enemy towards the player
 	var velocity = direction * speed * delta *20
 	move_and_slide(velocity)
 #	print(enemies)
@@ -41,6 +39,5 @@ func _process(delta):
 
 func _on_Area2D_area_entered(body):
 	if body.is_in_group("enemies"):
-		print("a")
-		body.take_damage(dmg)
+		body.get_parent().take_damage(dmg)
 		queue_free()
